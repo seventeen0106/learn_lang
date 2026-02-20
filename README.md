@@ -7,14 +7,16 @@
 lang_env\Scripts\activate
 ```
 
-### ru,
+> [!CAUTION]
+> 記得運行的時候 kernel 要變
+
+### 刪除指定 kernel：
 ```
 jupyter kernelspec list
 ```
-
-刪除指定 kernel：
+```
 jupyter kernelspec uninstall 要刪除的kernal
-
+```
 
 ## Day3
 
