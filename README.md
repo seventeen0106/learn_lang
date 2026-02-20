@@ -2,6 +2,13 @@
 
 ## 虛擬環境
 
+> 要在 cmd 不能在 powershell
+
+### 先 cd 到桌面
+```
+cd desktop
+```
+
 ### 激活虛擬環境
 ```
 lang_env\Scripts\activate
