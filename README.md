@@ -4,7 +4,7 @@
 
 ### 激活虛擬環境
 ```
-bert_env\Scripts\activate
+lang_env\Scripts\activate
 ```
 
 ### ru,
