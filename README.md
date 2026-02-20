@@ -26,6 +26,8 @@ pip install python-dotenv
 ```
 
 ### 2️⃣ 建立 `.env` 檔：
+> [!CAUTION]
+> 記得開啟副檔名修改，檔名叫做 `.env`，不是 `.env.txt`
 ```
 OPENAI_API_KEY=你的API_KEY
 ```
