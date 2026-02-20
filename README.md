@@ -34,16 +34,9 @@ OPENAI_API_KEY=你的API_KEY
 
 ### 3️⃣ Notebook 改成：
 ```
-import os
 from dotenv import load_dotenv
-from langchain_openai import ChatOpenAI
 
 load_dotenv()
-
-llm = ChatOpenAI(
-    model="gpt-4.1-nano",
-    openai_api_base="https://api.apertis.ai/v1",
-)
 ```
 
 ## Day3
