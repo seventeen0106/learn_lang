@@ -1,7 +1,19 @@
-# ipynb 
+# Jupyter
 
 ## Day3
 
-1. 修正了格式
-2. API 格式修改為 apertis
-3. 
+```
+pip install langchain
+pip install langchain-openai
+pip install langgraph
+```
+---
+```
+pip install python-dotenv
+```
+
+## Day4
+
+```
+pip install langchain-community
+```
