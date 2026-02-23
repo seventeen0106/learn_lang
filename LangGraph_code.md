@@ -4,41 +4,6 @@
 
 </div>
 
-## 01 安裝 langGraph 套件
-
-### **colab**
-
-```python
-%%capture --no-stderr
-%pip install --quiet langchain
-%pip install --quiet langchain-openai
-%pip install --quiet langgraph
-```
-
-### **jupyter(cmd)**
-
-```cmd
-pip install langchain
-pip install langchain-openai
-pip install langgraph
-```
-
-## 02 抓API Key
-
-### **colab**
-
-```python
-import os
-import getpass
-from google.colab import userdata
-```
-
-### **jupyter(cmd)**
-
-```cmd
-pip install python-dotenv
-```
-
 # 2️⃣ 打造對話機器人
 
 ## 01 定義狀態
