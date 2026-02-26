@@ -9,13 +9,18 @@
 cd desktop
 ```
 
-### 激活虛擬環境
+### 啟動虛擬環境
 ```
 lang_env\Scripts\activate
 ```
 
 > [!CAUTION]
 > 記得運行的時候 kernel 要變
+
+### 啟動 kernal
+```
+python -m ipykernel install --user --name=lang_env --display-name "Python (lang_env)"
+```
 
 ### 開啟 jupyter notebook
 ```
