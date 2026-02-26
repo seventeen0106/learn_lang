@@ -10,18 +10,20 @@
 
 ## 01 函式庫
 
-```
+```python
 from langgraph.graph import START
 from langgraph.graph import END
 ```
 
 ## 02 三種邊的類型
 
+通過 `add_node` 方法，每個節點都有一個唯一的名稱（如 "node_1"），這樣我們就可以在後續的工作流程中明確地引用它們。
+
 ### 2.1 普通邊(Simple Edge)
 
 > 最基本的邊，直接連接兩個節點，使用 `add_edge` 方法來添加。
 
-```
+```python
 # 這行程式碼告訴系統，'node_1' 完成處理後，訊息應該直接傳送到 'node_2'。
 graph.add_edge('node_1', 'node_2')
 ```
@@ -30,7 +32,7 @@ graph.add_edge('node_1', 'node_2')
 
 > 入口點是圖開始執行時運行的第一個節點。我們使用 `START` 節點來指定圖的入口。
 
-```
+```python
 # 工作從這裡開始，到那裡結束
 graph.add_edge(START, "node_a")
 graph.add_edge("node_2", END)
@@ -39,3 +41,18 @@ graph.add_edge("node_2", END)
 ### 2.3 條件邊(Conditional Edge)
 
 > 允許我們根據特定條件選擇下一個執行的節點，使用 `add_conditional_edges` 添加
+
+```python
+def where_to_go(state):
+  # 條件設定
+  if state['Condition']:
+    return "end"
+  else:
+    return "continue"
+
+# 代理的節點，透過條件設定，連接到後續 2 個節點
+graph.add_conditional_edges('agent',where_to_go,{
+    "end": END,
+    "continue": "weather_tool"
+})
+```
