@@ -134,7 +134,26 @@ def weather_tool(state: AllState):
     # 4. 回傳天氣結果
     return {"messages": [data]}
 
-## 節點 C：負責產生最終人性化回覆 (Responder Node)
+## 節點 C：條件分類函式
+# 這個函式不負責處理資料，只負責「看目前的狀態，然後決定下一步往哪走」
+def query_classify(state: AllState):
+    # 1. 從狀態 (state) 中拿出整疊訊息紀錄
+    messages = state["messages"]
+    
+    # 2. 取出要用來判斷的內容，messages[0] 抓到的是「使用者最初的問題」(例如：想知道杜拜天氣如何？)
+    ctx = messages[0] 
+    
+    # 3. 根據內容進行路由判斷 (Routing)
+    # 如果內容等於 "no_response" (代表找不到城市名稱，不需要查天氣)
+    if ctx == "no_response":
+        # 回傳 "end" 這個字串。拿著這個字串，去對應你前面寫好的字典 {"end": "responder"}，把流程導向 responder
+        return "end"
+    else:
+        # 如果不是 "no_response" (代表有成功萃取出城市名稱)
+        # 回傳 "continue" 字串，把流程導向 weather 節點去查天氣 API
+        return "continue"
+
+## 節點 D：負責產生最終人性化回覆 (Responder Node)
 def responder(state: AllState):
     # 1. 從當前狀態 (state) 中取出整疊「訊息歷史紀錄」
     messages = state["messages"]
