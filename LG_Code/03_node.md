@@ -140,8 +140,8 @@ def query_classify(state: AllState):
     # 1. 從狀態 (state) 中拿出整疊訊息紀錄
     messages = state["messages"]
     
-    # 2. 取出要用來判斷的內容，messages[0] 抓到的是「使用者最初的問題」(例如：想知道杜拜天氣如何？)
-    ctx = messages[0] 
+    # 2. 最後一筆資料
+    ctx = messages[-1] 
     
     # 3. 根據內容進行路由判斷 (Routing)
     # 如果內容等於 "no_response" (代表找不到城市名稱，不需要查天氣)
@@ -164,8 +164,8 @@ def responder(state: AllState):
         # messages[0]: 取出列表的「第一筆」資料，也就是使用者最初提問的問題
         "user_query": messages[0], 
         
-        # messages[1]: 取出列表的「第二筆」資料，前面工具節點查出來的結果
-        "information": messages[1] 
+        # messages[-1]: 最後一筆資料
+        "information": messages[-1] 
     })
     
     # 3. 將 AI 潤飾並生成好的最終回覆包裝成字典回傳。這筆回覆會被加到 messages 列表的最後面。
