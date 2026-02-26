@@ -10,7 +10,7 @@
 
 ## 01 函式庫
 
-```
+```python
 # 引入 LangChain 中用來串接 OpenAI 格式語言模型的套件
 from langchain_openai import ChatOpenAI
 # 引入用來建立提示詞範本（Prompt Template）的套件
@@ -21,7 +21,7 @@ from langchain_core.prompts import ChatPromptTemplate
 
 ### 1. 設定 AI 模型的函數
 
-```
+```python
 ### 設定 AI 模型
 ## 1. 初始化語言模型 (LLM)
 model = ChatOpenAI(
@@ -58,7 +58,7 @@ print(result.content)
 
 ### 2. 回傳天氣狀況（僅模擬外部 API）
 
-```
+```python
 ### 查詢台灣特定城市的天氣狀況 (模擬外部天氣 API)
 def get_taiwan_weather(city: str) -> str:
     # 簡單的字典，用來模擬資料庫查詢
@@ -73,7 +73,7 @@ def get_taiwan_weather(city: str) -> str:
 
 ## 03 轉化函數為節點
 
-```
+```python
 ## 節點 A：呼叫 LLM 萃取城市名稱
 def call_model(state: AllState):
     # 1. 從 state 拿出目前的訊息列表
