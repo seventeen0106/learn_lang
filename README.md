@@ -17,6 +17,11 @@ lang_env\Scripts\activate
 > [!CAUTION]
 > 記得運行的時候 kernel 要變
 
+### 開啟 jupyter notebook
+```
+jupyter notebook
+```
+
 ### 刪除指定 kernel：
 ```
 jupyter kernelspec list
