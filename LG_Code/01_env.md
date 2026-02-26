@@ -31,10 +31,21 @@ pip install langgraph
 import os
 import getpass
 from google.colab import userdata
+
+os.environ["OPENAI_API_KEY"] = userdata.get('OPENAI_API_KEY')
 ```
 
 ### **jupyter(cmd)**
 
+> 先在 cmd 安裝
+
 ```cmd
 pip install python-dotenv
+```
+
+```python
+from dotenv import load_dotenv
+
+# 在 .env 中抓API key
+load_dotenv()
 ```
