@@ -19,6 +19,8 @@ import operator
 
 ## 02 狀態設定
 
+要先設定好狀態的定義，使用 Python 的 `TypedDict`（或 Pydantic model、dataclass）來定義狀態結構(State Schema)，然後將它當作參數傳給後續在 Graph 階段會用到的 `StateGraph`。
+
 ```python
 ### 首先先來建立整張圖的狀態，我們將創建一種稱為「Messages」的狀態，它將儲存整個工作流程中發生的所有對話。所以讓我們先創建它！
 class AllState(TypedDict):
