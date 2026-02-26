@@ -24,6 +24,7 @@ import operator
 ```python
 ### 首先先來建立整張圖的狀態，我們將創建一種稱為「Messages」的狀態，它將儲存整個工作流程中發生的所有對話。所以讓我們先創建它！
 class AllState(TypedDict):
+    # 使用 Annotated[list, operator.add] 意思是：當有新資料回傳時，是用「附加 (append)」的方式加入列表，而不是覆蓋原本的紀錄。
     messages: Annotated[Sequence[str], operator.add]
 ```
 
