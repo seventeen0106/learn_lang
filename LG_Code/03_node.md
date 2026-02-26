@@ -71,6 +71,40 @@ def get_taiwan_weather(city: str) -> str:
     return f"{city}的天氣：{weather_data.get(city, '暫無資料')}"
 ```
 
+### 3. 設定條件篩選後得到的回應節點
+
+```python
+from langchain_openai import ChatOpenAI
+from langchain_core.prompts import ChatPromptTemplate
+
+model = ChatOpenAI(
+    model="gpt-4.1-nano",
+    openai_api_base="https://api.apertis.ai/v1", 
+)
+
+response_prompt_str = """
+  You have given a weather information and you have to respond to user's query based on the information
+
+  Here is the user query:
+  ---
+  {user_query}
+  ---
+
+  Here is the information:
+  ---
+  {information}
+  ---
+  """
+response_prompt = ChatPromptTemplate.from_template(response_prompt_str)
+
+response_chain = response_prompt | model
+res = response_chain.invoke({
+    "user_query": "請問杜拜天氣如何?",
+    "information": "no_response的天氣：暫無資料"
+    })
+res.content
+```
+
 ## 03 轉化函數為節點
 
 ```python
@@ -99,4 +133,22 @@ def weather_tool(state: AllState):
     
     # 4. 回傳天氣結果
     return {"messages": [data]}
+
+## 節點 C：負責產生最終人性化回覆 (Responder Node)
+def responder(state: AllState):
+    # 1. 從當前狀態 (state) 中取出整疊「訊息歷史紀錄」
+    messages = state["messages"]
+    
+    # 2. 呼叫另一個設定好的執行鏈 (response_chain) 來生成最終回答
+    # 這裡預期 response_chain 裡面有一個 Prompt，需要填入兩個變數：
+    response = response_chain.invoke({
+        # messages[0]: 取出列表的「第一筆」資料，也就是使用者最初提問的問題
+        "user_query": messages[0], 
+        
+        # messages[1]: 取出列表的「第二筆」資料，前面工具節點查出來的結果
+        "information": messages[1] 
+    })
+    
+    # 3. 將 AI 潤飾並生成好的最終回覆包裝成字典回傳。這筆回覆會被加到 messages 列表的最後面。
+    return {"messages": [response]}
 ```
