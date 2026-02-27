@@ -18,14 +18,18 @@
 ### **jupyter(cmd)**
 
 ```cmd
-:: Day3 LangChain、LangGraph
+:: Day3 LangChain、LangGraph : MVP 試跑
 pip install langchain
 pip install langchain-openai
 pip install langgraph
+
 :: 抓 .env 檔案
 pip install python-dotenv
-:: Day4 Langchain-community
+
+:: Day4 Langchain-community : state、node、edge、graph、display
 pip install langchain-community
+
+:: Day5 : LangChain - stream、LCEL、parser、event ； LangGraph - stream（無須安裝）
 ```
 
 ## 2️⃣ 抓API Key
