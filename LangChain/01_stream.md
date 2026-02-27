@@ -60,7 +60,9 @@ chunks = []
 async for chunk in model.astream("請你告訴我 k8s 跟 docker 區別"):
     chunks.append(chunk)
     print(chunk.content, end="|", flush=True) # 使用 end="|" 和 flush=True 可以實現平滑的輸出效果，讓用戶感受到實時生成的過程。
+```
 
+```python
 # 將所有字組合後印出來
 for chunk in model.stream("寫一首關於 k8s 的兒歌"):
     print(chunk.content, end="", flush=True)
